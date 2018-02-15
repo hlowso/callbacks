@@ -1,13 +1,13 @@
-function findWaldo(arr, found) {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] === "Waldo") {
-      found("Waldo", i);   // execute callback
-    }
+function findWaldo(arr, compare) {
+  arr.forEach(function(element) {
+  	compare(element, "Waldo", arr.indexOf(element));
+  });
+}
+
+function check(name, wanted, i) {
+	if(name === wanted) {
+  	console.log("Found", name, "at index", i, "!");
   }
 }
 
-function actionWhenFound(name, i) {
-  console.log("Found", name, "at index", i, "!");
-}
-
-findWaldo(["Alice", "Bob", "Waldo", "Winston"], actionWhenFound);
+findWaldo(["Alice", "Bob", "Waldo", "Winston"], check);
